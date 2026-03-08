@@ -80,3 +80,23 @@ font-weight:bold;
 .tools a:hover{
 background:#ddd;
 }
+.navbar{
+background:#222;
+padding:10px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+padding:8px 12px;
+}
+
+.navbar a:hover{
+background:#0a84ff;
+border-radius:5px;
+}
