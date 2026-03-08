@@ -60,3 +60,23 @@ color:white;
 text-decoration:none;
 border-radius:5px;
 }
+.tools{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.tools a{
+display:block;
+padding:10px;
+background:#eee;
+border-radius:5px;
+text-decoration:none;
+color:#333;
+font-weight:bold;
+}
+
+.tools a:hover{
+background:#ddd;
+}
