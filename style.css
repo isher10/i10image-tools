@@ -122,33 +122,31 @@ cursor:pointer;
 }
 
 /* Mobile Menu */
-
 .navbar{
-max-height:0;
-overflow:hidden;
-transition:max-height 0.4s ease;
+position:fixed;
+top:0;
+right:-250px;
+width:250px;
+height:100%;
 background:#ffffff;
+box-shadow:-2px 0 5px rgba(0,0,0,0.3);
+transition:0.3s;
+padding-top:60px;
 }
 
 .navbar a{
 display:block;
-padding:12px;
+padding:15px;
 text-decoration:none;
 color:#333;
-border-bottom:1px solid #ddd;
-}
-
-.navbar a{
-display:block;
-padding:12px;
-text-decoration:none;
-color:#333;
-border-bottom:1px solid #ddd;
+border-bottom:1px solid #eee;
+font-size:16px;
 }
 
 .navbar a:hover{
-background:#f1f1f1;
+background:#f2f2f2;
 }
+
 header h1{
 text-align:center;
 margin-top:20px;
