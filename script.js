@@ -214,3 +214,82 @@ img.src = URL.createObjectURL(file);
 });
 
 }
+function reduceImage(){
+
+const fileInput = document.getElementById("imageInput");
+
+const targetSize = document.getElementById("targetSize").value;
+
+if(!fileInput.files[0]){
+
+alert("Please select image");
+
+return;
+
+}
+
+const file = fileInput.files[0];
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img = new Image();
+
+img.src = e.target.result;
+
+img.onload = function(){
+
+const canvas = document.createElement("canvas");
+
+const ctx = canvas.getContext("2d");
+
+canvas.width = img.width;
+
+canvas.height = img.height;
+
+ctx.drawImage(img,0,0);
+
+let quality = 0.9;
+
+let dataUrl;
+
+do{
+
+dataUrl = canvas.toDataURL("image/jpeg",quality);
+
+quality -= 0.05;
+
+}while(dataUrl.length/1024 > targetSize && quality > 0.05);
+
+document.getElementById("resultBox").innerHTML =
+
+`
+<h3>Download Image</h3>
+
+<img src="${dataUrl}" style="max-width:200px">
+
+<p>Size: ${(dataUrl.length/1024).toFixed(1)} Kb</p>
+
+<input type="text" id="rename" placeholder="Rename Image">
+
+<br><br>
+
+<a href="${dataUrl}" download="compressed.jpg">
+
+<button>Download</button>
+
+</a>
+
+<br><br>
+
+<button onclick="deleteImage()">Delete Your Images From Server Now</button>
+`;
+
+}
+
+}
+
+reader.readAsDataURL(file);
+
+}
