@@ -275,11 +275,7 @@ document.getElementById("resultBox").innerHTML =
 
 <br><br>
 
-<a href="${dataUrl}" download="compressed.jpg">
-
-<button>Download</button>
-
-</a>
+<button onclick="downloadImage('${dataUrl}')">Download</button>
 
 <br><br>
 
@@ -323,3 +319,20 @@ reader.readAsDataURL(file);
 }
 
 });
+function downloadImage(dataUrl){
+
+let name = document.getElementById("rename").value;
+
+if(name == ""){
+name = "compressed-image";
+}
+
+const a = document.createElement("a");
+
+a.href = dataUrl;
+
+a.download = name + ".jpg";
+
+a.click();
+
+}
