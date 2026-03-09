@@ -293,3 +293,10 @@ document.getElementById("resultBox").innerHTML =
 reader.readAsDataURL(file);
 
 }
+function deleteImage(){
+
+document.getElementById("resultBox").innerHTML="";
+
+alert("Image deleted");
+
+}
