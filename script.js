@@ -769,3 +769,48 @@ viewport: viewport
 reader.readAsArrayBuffer(file);
 
 }
+function changeDPI(){
+
+const file = document.getElementById("dpiInput").files[0];
+const dpi = document.getElementById("dpiValue").value;
+
+if(!file){
+alert("Please upload image");
+return;
+}
+
+if(!dpi){
+alert("Enter DPI value");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img = new Image();
+
+img.onload = function(){
+
+const canvas = document.getElementById("dpiCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = img.width;
+canvas.height = img.height;
+
+ctx.drawImage(img,0,0);
+
+const result = canvas.toDataURL("image/jpeg");
+
+document.getElementById("dpiResult").innerHTML =
+'<a href="'+result+'" download="dpi-image.jpg">Download Image</a>';
+
+}
+
+img.src = e.target.result;
+
+}
+
+reader.readAsDataURL(file);
+
+}
