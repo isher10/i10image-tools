@@ -690,3 +690,37 @@ img.src = e.target.result;
 reader.readAsDataURL(file);
 
 }
+function convertImageToPDF(){
+
+const file = document.getElementById("pdfImageInput").files[0];
+
+if(!file){
+alert("Please upload image");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const { jsPDF } = window.jspdf;
+
+const pdf = new jsPDF();
+
+const img = new Image();
+
+img.onload = function(){
+
+pdf.addImage(img,"JPEG",10,10,180,160);
+
+pdf.save("converted.pdf");
+
+}
+
+img.src = e.target.result;
+
+}
+
+reader.readAsDataURL(file);
+
+}
