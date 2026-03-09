@@ -450,3 +450,53 @@ transition:0.3s;
 transform:translateY(-5px);
 box-shadow:0 6px 15px rgba(0,0,0,0.2);
 }
+.tool-box{
+background:white;
+width:90%;
+max-width:600px;
+margin:40px auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.upload-area{
+border:3px dashed #9aa4d6;
+padding:40px;
+margin-top:20px;
+border-radius:10px;
+}
+
+.upload-btn{
+display:inline-block;
+margin-top:10px;
+background:#0a84ff;
+color:white;
+padding:10px 20px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.size-box{
+margin-top:20px;
+}
+
+.size-box input{
+width:100px;
+padding:8px;
+}
+
+.size-box button{
+margin-left:10px;
+background:#4b5aa7;
+}
+
+.note{
+margin-top:10px;
+color:#666;
+font-size:14px;
+}
+
+#resultBox{
+margin-top:40px;
+}
