@@ -128,3 +128,30 @@ downloadLink.innerText = "Download PNG";
 reader.readAsDataURL(file);
 
 }
+const uploadInput = document.getElementById("upload");
+const previewImage = document.getElementById("previewImage");
+
+if(uploadInput){
+
+uploadInput.addEventListener("change", function(){
+
+const file = this.files[0];
+
+if(file){
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+previewImage.src = e.target.result;
+previewImage.style.display = "block";
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+}
