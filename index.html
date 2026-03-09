@@ -17,6 +17,17 @@ crossorigin="anonymous"></script>
 <link rel="stylesheet" href="style.css">
 
 </head>
+  <script>
+function searchTools() {
+let input = document.getElementById("toolSearch").value.toLowerCase();
+let tools = document.querySelectorAll(".tool-card");
+
+tools.forEach(function(tool){
+let text = tool.innerText.toLowerCase();
+tool.style.display = text.includes(input) ? "block" : "none";
+});
+}
+</script>
 <body>
 
 <header>
