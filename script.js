@@ -644,3 +644,49 @@ document.getElementById("bgResult").innerHTML =
 "<p>Background remover processing... (API required)</p>";
 
 }
+function addTextImage(){
+
+const file = document.getElementById("textImageInput").files[0];
+const text = document.getElementById("textInput").value;
+
+if(!file){
+alert("Please upload image");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img = new Image();
+
+img.onload = function(){
+
+const canvas = document.getElementById("textCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = img.width;
+canvas.height = img.height;
+
+ctx.drawImage(img,0,0);
+
+ctx.font = "40px Arial";
+ctx.fillStyle = "red";
+ctx.fillText(text,50,50);
+
+canvas.style.display = "block";
+
+const result = canvas.toDataURL("image/jpeg");
+
+document.getElementById("textResult").innerHTML =
+'<a href="'+result+'" download="text-image.jpg">Download Image</a>';
+
+}
+
+img.src = e.target.result;
+
+}
+
+reader.readAsDataURL(file);
+
+}
