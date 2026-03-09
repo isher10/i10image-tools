@@ -491,3 +491,48 @@ widthInput.value = Math.round(heightInput.value * ratio);
 }
 
 });
+function cropImage(){
+
+const file = document.getElementById("cropInput").files[0];
+
+if(!file){
+alert("Please upload image");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img = new Image();
+
+img.onload = function(){
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+
+const cropWidth = img.width / 2;
+const cropHeight = img.height / 2;
+
+canvas.width = cropWidth;
+canvas.height = cropHeight;
+
+ctx.drawImage(img,0,0,cropWidth,cropHeight,0,0,cropWidth,cropHeight);
+
+const cropped = canvas.toDataURL("image/jpeg");
+
+document.getElementById("cropPreview").src = cropped;
+document.getElementById("cropPreview").style.display = "block";
+
+document.getElementById("cropResult").innerHTML =
+'<a href="'+cropped+'" download="cropped-image.jpg">Download Cropped Image</a>';
+
+}
+
+img.src = e.target.result;
+
+}
+
+reader.readAsDataURL(file);
+
+}
