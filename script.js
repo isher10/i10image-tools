@@ -78,7 +78,9 @@ downloadLink.href = jpg;
 downloadLink.download = "converted-image.jpg";
 downloadLink.style.display = "inline-block";
 downloadLink.innerText = "Download JPG";
+document.getElementById("afterImage").src = jpg;
 
+document.getElementById("compareBox").style.display = "block";
 }
 
 }
