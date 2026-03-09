@@ -332,3 +332,27 @@ text-align:justify;
 line-height:1.7;
 color:#444;
 }
+.tool-card{
+background:white;
+padding:15px;
+border-radius:10px;
+text-decoration:none;
+color:#333;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.tool-card:hover{
+transform:translateY(-5px);
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+.tool-card h3{
+margin:0;
+font-size:18px;
+}
+
+.tool-card p{
+font-size:14px;
+color:#666;
+}
