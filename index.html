@@ -100,7 +100,16 @@ crossorigin="anonymous"></script>
 
 <h2>Reduce Image Size in KB</h2>
 
-<input type="file" id="upload">
+<div class="upload-area" id="uploadArea">
+
+<p>Drag & Drop Image Here</p>
+<p>or</p>
+
+<label for="upload" class="upload-btn">Choose Image</label>
+
+<input type="file" id="upload" hidden>
+
+</div>
   <div class="preview-box">
 
 <img id="previewImage" style="display:none; max-width:100%; margin-top:15px; border-radius:10px;">
