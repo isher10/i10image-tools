@@ -500,3 +500,49 @@ font-size:14px;
 #resultBox{
 margin-top:40px;
 }
+.resize-tool{
+max-width:600px;
+margin:auto;
+background:#fff;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.upload-box{
+border:2px dashed #8fb3ff;
+padding:40px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.select-btn{
+background:#2d7df6;
+color:white;
+padding:10px 20px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.size-controls{
+display:flex;
+gap:10px;
+align-items:center;
+margin-bottom:20px;
+}
+
+.extra-options{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.resize-btn{
+background:#2d7df6;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
