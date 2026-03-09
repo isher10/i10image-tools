@@ -536,3 +536,48 @@ img.src = e.target.result;
 reader.readAsDataURL(file);
 
 }
+function rotateImage(){
+
+const file = document.getElementById("rotateInput").files[0];
+
+if(!file){
+alert("Please upload image");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img = new Image();
+
+img.onload = function(){
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = img.height;
+canvas.height = img.width;
+
+ctx.translate(canvas.width/2,canvas.height/2);
+ctx.rotate(90 * Math.PI / 180);
+
+ctx.drawImage(img,-img.width/2,-img.height/2);
+
+const rotated = canvas.toDataURL("image/jpeg");
+
+document.getElementById("rotatePreview").src = rotated;
+document.getElementById("rotatePreview").style.display = "block";
+
+document.getElementById("rotateResult").innerHTML =
+'<a href="'+rotated+'" download="rotated-image.jpg">Download Rotated Image</a>';
+
+}
+
+img.src = e.target.result;
+
+}
+
+reader.readAsDataURL(file);
+
+}
