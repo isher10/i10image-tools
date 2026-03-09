@@ -184,3 +184,31 @@ uploadFile.dispatchEvent(event);
 });
 
 }
+const imageInfo = document.getElementById("imageInfo");
+
+if(uploadInput){
+
+uploadInput.addEventListener("change", function(){
+
+const file = this.files[0];
+
+if(file){
+
+const img = new Image();
+
+img.onload = function(){
+
+const sizeKB = (file.size / 1024).toFixed(2);
+
+imageInfo.innerHTML =
+"Width: " + img.width + "px | Height: " + img.height + "px | Size: " + sizeKB + " KB";
+
+}
+
+img.src = URL.createObjectURL(file);
+
+}
+
+});
+
+}
