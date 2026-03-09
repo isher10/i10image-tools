@@ -386,3 +386,56 @@ download.download = "resized-image."+format;
 download.style.display = "inline";
 
 }
+let lock = true;
+
+const widthInput = document.getElementById("width");
+const heightInput = document.getElementById("height");
+const lockBtn = document.getElementById("lockBtn");
+
+let ratio = 1;
+
+lockBtn.addEventListener("click",function(){
+
+lock = !lock;
+
+if(lock){
+
+lockBtn.innerHTML="🔒";
+
+}else{
+
+lockBtn.innerHTML="🔓";
+
+}
+
+});
+
+upload.addEventListener("change",function(){
+
+ratio = originalImage.width / originalImage.height;
+
+widthInput.value = originalImage.width;
+
+heightInput.value = originalImage.height;
+
+});
+
+widthInput.addEventListener("input",function(){
+
+if(lock){
+
+heightInput.value = Math.round(widthInput.value / ratio);
+
+}
+
+});
+
+heightInput.addEventListener("input",function(){
+
+if(lock){
+
+widthInput.value = Math.round(heightInput.value * ratio);
+
+}
+
+});
