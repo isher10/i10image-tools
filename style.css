@@ -385,3 +385,7 @@ cursor:pointer;
 .upload-btn:hover{
 background:#eee;
 }
+.preview-box{
+margin-top:20px;
+text-align:center;
+}
