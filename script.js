@@ -300,3 +300,26 @@ document.getElementById("resultBox").innerHTML="";
 alert("Image deleted");
 
 }
+document.getElementById("imageInput").addEventListener("change", function(){
+
+const file = this.files[0];
+
+if(file){
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const preview = document.getElementById("previewImage");
+
+preview.src = e.target.result;
+
+preview.style.display = "block";
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+});
