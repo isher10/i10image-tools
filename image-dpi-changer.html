@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image DPI Changer - i10Image Tools</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>i10Image Tools</h1>
+
+<p>Change Image DPI</p>
+
+</header>
+
+<div class="container">
+
+<h2>Image DPI Changer</h2>
+
+<p>Upload image and change DPI.</p>
+
+<div class="tool-box">
+
+<input type="file" id="dpiInput">
+
+<br><br>
+
+<input type="number" id="dpiValue" placeholder="Enter DPI (example 300)">
+
+<br><br>
+
+<button onclick="changeDPI()">Change DPI</button>
+
+</div>
+
+<br>
+
+<canvas id="dpiCanvas"></canvas>
+
+<div id="dpiResult"></div>
+
+</div>
+
+<footer>
+
+<p>© 2026 i10Image Tools</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
