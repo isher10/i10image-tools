@@ -28,9 +28,44 @@
 
 <input type="file" id="upload">
 
-<input type="number" id="width" placeholder="Enter Width">
+<br><br>
 
-<input type="number" id="height" placeholder="Enter Height">
+<img id="preview" style="max-width:200px; display:none;">
+
+<br><br>
+
+<label>Width</label>
+<input type="number" id="width" placeholder="Width">
+
+<label>Height</label>
+<input type="number" id="height" placeholder="Height">
+
+<button id="lockBtn">🔒</button>
+
+<select id="unit">
+<option value="percent">Percent</option>
+<option value="px">Pixels</option>
+<option value="cm">Centimetres</option>
+<option value="inch">Inches</option>
+</select>
+
+<br><br>
+
+<label>Format</label>
+
+<select id="format">
+<option value="jpeg">JPG</option>
+<option value="png">PNG</option>
+<option value="gif">GIF</option>
+</select>
+
+<label>Quality</label>
+<input type="number" id="quality" value="90">
+
+<label>Background</label>
+<input type="color" id="background">
+
+<br><br>
 
 <button onclick="resizeImage()">Resize Image</button>
 
