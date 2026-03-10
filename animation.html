@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>i10 Intro</title>
+
+<style>
+
+body{
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:white;
+overflow:hidden;
+}
+
+/* Logo */
+
+#logo{
+width:320px;
+opacity:0;
+animation:logoFade 0.5s forwards;
+animation-delay:3.8s;
+}
+
+/* Dot */
+
+#dot{
+position:absolute;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#3db2ff;
+top:40%;
+left:46%;
+transform:scale(0);
+animation:dotPop 0.6s forwards;
+}
+
+/* i line */
+
+#iline{
+position:absolute;
+width:10px;
+height:70px;
+background:#3db2ff;
+top:44%;
+left:46.7%;
+transform:scaleY(0);
+transform-origin:top;
+animation:lineGrow 0.6s forwards;
+animation-delay:0.6s;
+}
+
+/* 1 */
+
+#one{
+position:absolute;
+width:10px;
+height:80px;
+background:linear-gradient(180deg,#6a3df0,#e24aa8);
+top:43%;
+left:50%;
+transform:scaleY(0);
+transform-origin:top;
+animation:oneGrow 0.7s forwards;
+animation-delay:1.2s;
+}
+
+/* 0 */
+
+#zero{
+position:absolute;
+width:70px;
+height:70px;
+border:10px solid #c63bd6;
+border-radius:50%;
+top:43%;
+left:54%;
+transform:scale(0);
+animation:zeroBuild 0.8s forwards;
+animation-delay:2s;
+}
+
+/* bottom curve */
+
+#curve{
+position:absolute;
+width:180px;
+height:6px;
+background:linear-gradient(90deg,#3db2ff,#e24aa8);
+border-radius:20px;
+top:55%;
+left:44%;
+transform:scaleX(0);
+transform-origin:left;
+animation:curveGrow 0.8s forwards;
+animation-delay:2.8s;
+}
+
+/* animations */
+
+@keyframes dotPop{
+to{transform:scale(1);}
+}
+
+@keyframes lineGrow{
+to{transform:scaleY(1);}
+}
+
+@keyframes oneGrow{
+to{transform:scaleY(1);}
+}
+
+@keyframes zeroBuild{
+to{transform:scale(1);}
+}
+
+@keyframes curveGrow{
+to{transform:scaleX(1);}
+}
+
+@keyframes logoFade{
+to{opacity:1;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="dot"></div>
+<div id="iline"></div>
+<div id="one"></div>
+<div id="zero"></div>
+<div id="curve"></div>
+
+<img src="logo.png" id="logo">
+
+<script>
+
+/* animation finish → open website */
+
+setTimeout(function(){
+window.location.href="index.html";
+},5000);
+
+</script>
+
+</body>
+</html>
