@@ -81,6 +81,9 @@ edit images quickly without installing any software.
 <input type="text" id="toolSearch" onkeyup="searchTools()" placeholder="Search image tools...">
 <button>🔍</button>
 </div>
+  <p id="noTools" style="display:none; font-weight:bold; margin-top:15px;">
+No tools found
+</p>
   
   <div class="tools">
 
@@ -440,14 +443,16 @@ menu.style.left = "0%";
 </script>
 
 <script src="script.js"></script>
-  <script>
+<script>
 
 const searchInput = document.getElementById("toolSearch");
 const tools = document.querySelectorAll(".tool-btn");
+const noTools = document.getElementById("noTools");
 
 searchInput.addEventListener("input", function(){
 
 let value = this.value.toLowerCase().trim();
+let found = 0;
 
 tools.forEach(function(tool){
 
@@ -455,15 +460,21 @@ let name = tool.textContent.toLowerCase();
 
 if(name.indexOf(value) !== -1){
 tool.style.display = "block";
+found++;
 }else{
 tool.style.display = "none";
 }
 
 });
 
+if(found === 0){
+noTools.style.display="block";
+}else{
+noTools.style.display="none";
+}
+
 });
 
 </script>
-
 </body>
 </html>
