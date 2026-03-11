@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-</script>
-
 <head>
 
 <meta charset="UTF-8">
@@ -72,7 +70,7 @@ crossorigin="anonymous"></script>
 <p>
 Our website provides free online image tools like image compression, resize image, convert JPG, convert PNG, crop image, rotate image and many more tools. All tools work directly in your browser and help you edit images quickly without installing any software.
 </p>
-
+<p>
 Our website provides free online image tools like image compression,
 resize image, convert JPG, convert PNG, crop image, rotate image and
 many more tools. All tools work directly in your browser and help you
@@ -362,10 +360,8 @@ text-align:center;
 
 <a id="download" style="display:none;">Download Image</a>
 
+                                                                                                
 
-
-</section>
-  
   <footer class="big-footer">
 
 <div class="footer-container">
@@ -447,7 +443,7 @@ menu.style.left = "0%";
   <script>
 function searchTools() {
 let input = document.getElementById("toolSearch").value.toLowerCase();
-let tools = document.querySelectorAll(".tool-card");
+let tools = document.querySelectorAll(".tool-btn");
 
 tools.forEach(function(tool){
 let text = tool.innerText.toLowerCase();
@@ -455,43 +451,13 @@ tool.style.display = text.includes(input) ? "block" : "none";
 });
 }
 </script>
-<script>
+    <script>
 setTimeout(function(){
 
 document.getElementById("splash").style.display="none";
 
 },3500);
-
 </script>
-function searchTools() {
-let input = document.getElementById("toolSearch").value.toLowerCase();
-let tools = document.querySelectorAll(".tool-card");
 
-tools.forEach(function(tool){
-let text = tool.innerText.toLowerCase();
-tool.style.display = text.includes(input) ? "block" : "none";
-});
-}
-<script>
-function searchTools() {
-
-let input = document.getElementById("toolSearch").value.toLowerCase();
-
-let tools = document.querySelectorAll(".tool-card");
-
-tools.forEach(function(tool){
-
-let text = tool.innerText.toLowerCase();
-
-if(text.includes(input)){
-tool.style.display = "block";
-}else{
-tool.style.display = "none";
-}
-
-});
-
-}
-</script>
 </body>
 </html>
