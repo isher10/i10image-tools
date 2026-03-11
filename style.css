@@ -18,7 +18,7 @@ width:95%;
 max-width:1100px;
 margin:40px auto;
 padding:20px;
-border-radius:10px;
+border-radius:10px;j
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -717,6 +717,66 @@ animation:logoDraw 3s ease forwards;
 }
 
 @keyframes logoDraw{
+to{
+stroke-dashoffset:0;
+}
+}
+#splash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+#logoAnim{
+width:220px;
+}
+
+/* DOT animation */
+#dot{
+transform:scale(0);
+animation:dotPop 0.5s forwards;
+}
+
+@keyframes dotPop{
+to{transform:scale(1);}
+}
+
+/* i body */
+#ibody{
+stroke-dasharray:200;
+stroke-dashoffset:200;
+animation:draw 0.6s 0.5s forwards;
+}
+
+/* 1 */
+#one{
+stroke-dasharray:200;
+stroke-dashoffset:200;
+animation:draw 0.6s 1.1s forwards;
+}
+
+/* 0 */
+#zero{
+stroke-dasharray:500;
+stroke-dashoffset:500;
+animation:draw 0.8s 1.7s forwards;
+}
+
+/* curve */
+#curve{
+stroke-dasharray:400;
+stroke-dashoffset:400;
+animation:draw 0.6s 2.5s forwards;
+}
+
+@keyframes draw{
 to{
 stroke-dashoffset:0;
 }
