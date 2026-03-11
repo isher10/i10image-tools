@@ -329,3 +329,19 @@ padding:15px;
 background:#222;
 color:white;
 }
+.logo{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.logo img{
+height:32px;
+width:auto;
+}
+
+.logo span{
+font-size:20px;
+font-weight:bold;
+color:white;
+}
