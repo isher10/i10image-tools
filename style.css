@@ -688,3 +688,36 @@ font-weight:500;
 max-width:100%;
 width:100%;
 }
+/* Splash Screen */
+
+#splash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+/* SVG animation */
+
+#splash svg path{
+stroke:black;
+stroke-width:3;
+fill:none;
+
+stroke-dasharray:2000;
+stroke-dashoffset:2000;
+
+animation:logoDraw 3s ease forwards;
+}
+
+@keyframes logoDraw{
+to{
+stroke-dashoffset:0;
+}
+}
