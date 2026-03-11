@@ -538,3 +538,19 @@ padding:10px;
 box-shadow:0 2px 10px rgba(0,0,0,0.1);
 
 }
+.rating-box{
+text-align:center;
+padding:30px;
+margin-top:30px;
+}
+
+.stars i{
+font-size:28px;
+color:#ccc;
+cursor:pointer;
+margin:5px;
+}
+
+.stars i.active{
+color:#1e73be;
+}
