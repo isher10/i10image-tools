@@ -652,12 +652,25 @@ loadRating();
 }
 
 document.querySelectorAll("#stars i").forEach(star=>{
+  let savedRating = localStorage.getItem("userRating");
+
+if(savedRating){
+document.querySelectorAll("#stars i").forEach((s,index)=>{
+if(index < savedRating){
+s.classList.add("active");
+}
+});
+}
 
 star.addEventListener("click",function(){
+  if(localStorage.getItem("userRated")){
+alert("You already rated this website");
+return;
+}
 
 let value = Number(this.getAttribute("data-value"));
 saveRating(value);
-
+localStorage.setItem("userRating",value);
 });
 
 });
