@@ -648,6 +648,7 @@ loadRating();
 }
 
 document.querySelectorAll("#stars i").forEach(star=>{
+
 let savedRating = localStorage.getItem("userRating");
 
 if(savedRating){
@@ -658,7 +659,7 @@ s.classList.add("active");
 });
 }
 
-document.querySelectorAll("#stars i").forEach(star=>{
+
 star.addEventListener("click",function(){
 
 if(localStorage.getItem("userRated")){
@@ -667,17 +668,17 @@ return;
 }
 
 let value = Number(this.getAttribute("data-value"));
+
 saveRating(value);
+
 localStorage.setItem("userRating",value);
 
 });
-
 });
 
 window.addEventListener("load", function(){
 loadRating();
 });
-
 </script>
 
 </body>
