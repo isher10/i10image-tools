@@ -617,8 +617,8 @@ if(snap.exists()){
 let data = snap.data();
 let avg = (data.total / data.count).toFixed(1);
 
-document.getElementById("ratingText").innerText =
-avg + " ⭐ (" + data.count + ")";
+document.getElementById("ratingText").innerHTML =
+avg + " ⭐ (" + data.count + " ratings)";
 
 }
 
@@ -674,7 +674,9 @@ localStorage.setItem("userRating",value);
 
 });
 
+window.addEventListener("load", function(){
 loadRating();
+});
 
 </script>
 
