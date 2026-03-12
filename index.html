@@ -625,6 +625,10 @@ avg + " ⭐ (" + data.count + ")";
 
 }
 
+  if(localStorage.getItem("userRated")){
+alert("You already rated this website");
+return;
+}
 async function saveRating(value){
 
 const snap = await getDoc(ratingRef);
@@ -642,6 +646,7 @@ count++;
 
 await setDoc(ratingRef,{total:total,count:count});
 
+ localStorage.setItem("userRated","yes");
 loadRating();
 
 }
