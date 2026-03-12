@@ -511,7 +511,6 @@ document.documentElement.scrollTop = 0;
 
     </script>
   <script>
-
 const searchInput = document.getElementById("toolSearch");
 const tools = document.querySelectorAll(".tool-btn");
 const titles = document.querySelectorAll(".tools-title");
@@ -526,23 +525,11 @@ tools.forEach(function(tool){
 
 let name = tool.textContent.toLowerCase();
 
-tool.innerHTML = tool.textContent;
-
-if(name.indexOf(value) !== -1){
-
+if(name.includes(value)){
 tool.style.display="block";
-
-if(value !== ""){
-let regex = new RegExp(value,"gi");
-tool.innerHTML = tool.textContent.replace(regex,"<span style='background:yellow;'>"+value+"</span>");
-}
-
 found++;
-
 }else{
-
 tool.style.display="none";
-
 }
 
 });
