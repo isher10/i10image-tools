@@ -1,4 +1,4 @@
-body{
+5body{
 font-family: Arial, sans-serif;
 background:#f4f6fb;
 margin:0;
@@ -574,16 +574,21 @@ margin:5px;
 .stars i.active{
 color:#2196f3;
 }
+
 #suggestions{
 background:white;
 border:1px solid #ddd;
 max-height:200px;
 overflow-y:auto;
 position:absolute;
-width:90%;
+left:50%;
+transform:translateX(-50%);
+width:70%;
 z-index:1000;
+border-radius:8px;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+display:none;
 }
-
 #suggestions div{
 padding:10px;
 cursor:pointer;
