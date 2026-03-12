@@ -701,6 +701,38 @@ localStorage.setItem("userRating",value);
 window.addEventListener("load", function(){
 loadRating();
 });
+  <script>
+
+const searchInput = document.getElementById("searchInput");
+const tools = document.querySelectorAll(".tool-card");
+
+searchInput.addEventListener("keyup", function(){
+
+let filter = searchInput.value.toLowerCase();
+let found = false;
+
+tools.forEach(function(tool){
+
+let text = tool.innerText.toLowerCase();
+
+if(text.includes(filter)){
+tool.style.display="block";
+found = true;
+}else{
+tool.style.display="none";
+}
+
+});
+
+if(!found && filter !== ""){
+document.getElementById("suggestions").style.display="block";
+document.getElementById("suggestions").innerHTML="Not Found";
+}else{
+document.getElementById("suggestions").style.display="none";
+}
+
+});
+
 </script>
 
 </body>
