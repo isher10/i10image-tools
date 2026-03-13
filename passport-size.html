@@ -1,0 +1,190 @@
+g{variant="standard" id="90241"}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Select Passport Size - i10 Image Tools</title>
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#f5f5f5;
+}
+
+header{
+background:#2c3e90;
+color:white;
+padding:15px;
+font-size:22px;
+font-weight:bold;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:20px;
+}
+
+.box{
+background:white;
+border:2px solid #2c3e90;
+padding:25px;
+text-align:center;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.card{
+border:2px solid #ccc;
+padding:15px;
+cursor:pointer;
+border-radius:6px;
+}
+
+.card:hover{
+border-color:#2c3e90;
+}
+
+.selected{
+border:2px solid #2c3e90;
+background:#eef2ff;
+}
+
+button{
+background:#2c3e90;
+color:white;
+border:none;
+padding:12px 25px;
+cursor:pointer;
+margin-top:20px;
+font-size:16px;
+border-radius:5px;
+}
+
+button:hover{
+background:black;
+}
+
+input,select{
+padding:6px;
+margin-top:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+i10 IMAGE TOOLS
+</header>
+
+<div class="container">
+
+<div class="box">
+
+<h2>Select Passport Photo Size</h2>
+
+<p>
+Default DPI :
+<input type="number" id="dpi" value="300">
+</p>
+
+<div class="grid">
+
+<div class="card selected" onclick="selectSize(this,35,45)">
+<b>3.5 cm × 4.5 cm</b>
+<br>
+India / Europe / UK
+</div>
+
+<div class="card" onclick="selectSize(this,51,51)">
+<b>2 × 2 inch</b>
+<br>
+USA / Philippines
+</div>
+
+<div class="card" onclick="selectSize(this,50,70)">
+<b>50 × 70 mm</b>
+<br>
+Canada
+</div>
+
+<div class="card">
+
+<b>Custom Size</b>
+<br><br>
+
+<select id="unit">
+<option value="cm">CM</option>
+<option value="mm">MM</option>
+<option value="inch">INCH</option>
+<option value="px">PX</option>
+</select>
+
+<br><br>
+
+<input id="width" placeholder="Width">
+x
+<input id="height" placeholder="Height">
+
+</div>
+
+</div>
+
+<button onclick="nextStep()">Next</button>
+
+</div>
+
+</div>
+
+<script>
+
+let width=35
+let height=45
+
+function selectSize(el,w,h){
+
+document.querySelectorAll(".card").forEach(c=>{
+c.classList.remove("selected")
+})
+
+el.classList.add("selected")
+
+width=w
+height=h
+
+}
+
+function nextStep(){
+
+let w=document.getElementById("width").value
+let h=document.getElementById("height").value
+let unit=document.getElementById("unit").value
+let dpi=document.getElementById("dpi").value
+
+if(w && h){
+width=w
+height=h
+}
+
+localStorage.setItem("photoWidth",width)
+localStorage.setItem("photoHeight",height)
+localStorage.setItem("photoUnit",unit)
+localStorage.setItem("photoDPI",dpi)
+
+window.location.href="crop.html
+<script>
+  </body>
+</html>
+:::
