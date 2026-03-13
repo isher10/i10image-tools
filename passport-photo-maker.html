@@ -1,21 +1,16 @@
-।
-
-:::writing{variant="standard" id="90142"}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Passport Photo Maker - i10 Image Tools</title>
 
 <style>
 
 body{
-margin:0;
 font-family:Arial;
-background:#f2f4f8;
+margin:0;
+background:#f3f5f9;
 }
 
 .header{
@@ -23,130 +18,81 @@ background:#2d5cff;
 color:white;
 padding:15px;
 font-size:22px;
-display:flex;
-justify-content:space-between;
+font-weight:bold;
 }
 
 .container{
 max-width:1100px;
 margin:auto;
-padding:30px;
+padding:20px;
+}
+
+.stepbar{
+display:flex;
+justify-content:space-between;
+margin-bottom:20px;
+}
+
+.step{
+flex:1;
+padding:10px;
+border-bottom:3px solid #ccc;
 text-align:center;
 }
 
-.upload-box{
+.active{
+border-color:#2d5cff;
+font-weight:bold;
+}
+
+.panel{
+background:white;
+padding:25px;
+border-radius:8px;
+}
+
+.upload-area{
 border:3px dashed #2d5cff;
 padding:60px;
-background:white;
-border-radius:8px;
+text-align:center;
 }
 
-.upload-btn{
-padding:12px 25px;
-background:#1abc9c;
-border:none;
+button{
+background:#2d5cff;
 color:white;
-font-size:16px;
+border:none;
+padding:10px 20px;
+margin:5px;
 cursor:pointer;
 }
 
-.size-panel{
-display:none;
-margin-top:30px;
-background:white;
-padding:20px;
-border-radius:8px;
-}
-
-.size-option{
-border:1px solid #ddd;
-padding:10px;
-margin:10px;
-cursor:pointer;
-}
-
-.crop-area{
-display:none;
-margin-top:30px;
+select,input{
+padding:8px;
+margin:5px;
 }
 
 .canvas-box{
 width:300px;
 height:380px;
-border:2px solid #000;
+border:2px solid black;
 margin:auto;
 overflow:hidden;
 }
 
-canvas{
-width:100%;
+.controls{
+text-align:center;
+margin-top:10px;
 }
 
-.controls button{
-padding:10px 20px;
-margin:10px;
-background:#2d5cff;
-color:white;
-border:none;
+.slider{
+width:200px;
 }
 
-.background-step{
-display:none;
-margin-top:40px;
-}
-
-.bg-container{
+.preview-wrap{
 display:flex;
 gap:30px;
 justify-content:center;
 flex-wrap:wrap;
-}
-
-.preview-box{
-background:white;
-padding:20px;
-border-radius:8px;
-}
-
-.color-picker{
-margin-top:15px;
-}
-
-.text-box{
-display:none;
-margin-top:20px;
-}
-
-.download-step{
-display:none;
-margin-top:40px;
-}
-
-.download-container{
-display:flex;
-gap:30px;
-justify-content:center;
-flex-wrap:wrap;
-}
-
-.sheet-box{
-background:white;
-padding:20px;
-border-radius:8px;
-width:350px;
-}
-
-.bottom-buttons{
-margin-top:20px;
-}
-
-.bottom-buttons button{
-padding:12px 25px;
-margin:10px;
-background:#2d5cff;
-color:white;
-border:none;
-cursor:pointer;
 }
 
 </style>
@@ -155,40 +101,60 @@ cursor:pointer;
 
 <body>
 
-<div class="header">
-
-<div>i10 IMAGE TOOLS</div>
-<div>☰</div>
-
-</div>
+<div class="header">i10 IMAGE TOOLS</div>
 
 <div class="container">
 
-<h2>Passport Photo Maker</h2>
+<div class="stepbar">
+<div class="step active" id="s1">Upload</div>
+<div class="step" id="s2">Crop</div>
+<div class="step" id="s3">Background</div>
+<div class="step" id="s4">Download</div>
+</div>
 
-<div class="upload-box">
 
-<input type="file" id="imageInput" hidden accept="image/*">
+<div class="panel" id="uploadPanel">
 
-<button class="upload-btn" onclick="document.getElementById('imageInput').click()">
-Select Image
-</button>
+<div class="upload-area">
+
+<input type="file" id="imageInput" hidden>
+
+<button onclick="imageInput.click()">Select Image</button>
+
+</div>
+
+<br>
+
+<b>Select Passport Photo Size</b>
+
+<br><br>
+
+<select id="country">
+<option value="35x45">India / UK / Europe / Pakistan (35x45 mm)</option>
+<option value="2x2">USA / Philippines (2x2 inch)</option>
+<option value="50x70">Canada (50x70 mm)</option>
+</select>
+
+<br>
+
+<select id="unit">
+<option>MM</option>
+<option>CM</option>
+<option>INCH</option>
+<option>PX</option>
+</select>
+
+<input type="number" value="300" id="dpi"> DPI
+
+<br><br>
+
+<button onclick="goCrop()">Next</button>
 
 </div>
 
 
-<div class="size-panel" id="sizePanel">
 
-<h3>Select Passport Size</h3>
-
-<div class="size-option" onclick="startCrop()">35 × 45 mm</div>
-<div class="size-option" onclick="startCrop()">2 × 2 inch</div>
-<div class="size-option" onclick="startCrop()">50 × 70 mm</div>
-
-</div>
-
-
-<div class="crop-area" id="cropArea">
+<div class="panel" id="cropPanel" style="display:none">
 
 <h3>Crop Face</h3>
 
@@ -197,41 +163,61 @@ Select Image
 </div>
 
 <div class="controls">
+
 <button onclick="zoomIn()">+</button>
 <button onclick="zoomOut()">-</button>
+
+<br>
+
+Brightness
+<input type="range" min="0" max="200" value="100" id="brightness" class="slider">
+
+<br>
+
+Saturation
+<input type="range" min="0" max="200" value="100" id="saturation" class="slider">
+
+<br>
+
+Contrast
+<input type="range" min="0" max="200" value="100" id="contrast" class="slider">
+
 </div>
 
-<div class="bottom-buttons">
+<br>
 
-<button onclick="backToSize()">Back</button>
+<button onclick="backUpload()">Back</button>
 <button onclick="goBackground()">Save & Next</button>
 
 </div>
 
-</div>
 
 
-<div class="background-step" id="backgroundStep">
+<div class="panel" id="bgPanel" style="display:none">
 
 <h3>Background</h3>
 
-<div class="bg-container">
+<div class="preview-wrap">
 
-<div class="preview-box">
+<div>
 
-<p>Original</p>
+Original
+
+<br>
 
 <canvas id="originalCanvas" width="300" height="380"></canvas>
 
 </div>
 
-<div class="preview-box">
+<div>
 
-<p>Background</p>
+Background
+
+<br>
 
 <canvas id="bgCanvas" width="300" height="380"></canvas>
 
-<div class="color-picker">
+<br>
 
 <input type="color" id="bgColor" value="#ffffff">
 
@@ -239,80 +225,57 @@ Select Image
 
 </div>
 
-</div>
-
+<br>
 
 <label>
 
-<input type="checkbox" onclick="showTextBox()">
+<input type="checkbox" id="writeText">
 
 Write Name & Date on Image
 
 </label>
 
-<div class="text-box" id="textBox">
+<br>
 
-<input type="text" id="nameInput" placeholder="Enter Name">
+<input type="text" id="name" placeholder="Name">
 
-<input type="date" id="dateInput">
+<input type="date" id="date">
 
-</div>
+<br><br>
 
-
-<div class="bottom-buttons">
-
-<button onclick="backToCrop()">Back</button>
-
+<button onclick="backCrop()">Back</button>
 <button onclick="goDownload()">Save & Next</button>
 
 </div>
 
-</div>
 
 
-<div class="download-step" id="downloadStep">
+<div class="panel" id="downloadPanel" style="display:none">
 
 <h3>Download</h3>
 
-<div class="download-container">
-
-<div class="sheet-box">
-
-<h4>Online Submission</h4>
-
 <button onclick="downloadSingle()">Download Photo</button>
-
-</div>
-
-<div class="sheet-box">
-
-<h4>Print Sheet</h4>
-
-<select id="sheetType">
-
-<option value="a4">A4</option>
-
-<option value="3a4">3/A4</option>
-
-<option value="custom">Custom</option>
-
-</select>
 
 <br><br>
 
+Print Sheet
+
+<select id="sheet">
+<option value="a4">A4</option>
+<option value="3a4">3/A4</option>
+<option value="custom">Custom</option>
+</select>
+
+<br>
+
 <button onclick="downloadSheet()">Download Sheet</button>
 
-</div>
+<br><br>
+
+<button onclick="backBg()">Back</button>
 
 </div>
 
-<div class="bottom-buttons">
-
-<button onclick="backToBackground()">Back</button>
-
-</div>
-
-</div>
 
 </div>
 
@@ -320,11 +283,6 @@ Write Name & Date on Image
 <script>
 
 let imageInput=document.getElementById("imageInput");
-let sizePanel=document.getElementById("sizePanel");
-let cropArea=document.getElementById("cropArea");
-let backgroundStep=document.getElementById("backgroundStep");
-let downloadStep=document.getElementById("downloadStep");
-
 let canvas=document.getElementById("canvas");
 let ctx=canvas.getContext("2d");
 
@@ -335,189 +293,148 @@ let bgCanvas=document.getElementById("bgCanvas");
 let bgctx=bgCanvas.getContext("2d");
 
 let img=new Image();
-
 let scale=1;
-
-imageInput.addEventListener("change",function(){
-
-let file=this.files[0];
-
-if(file){
-
-let reader=new FileReader();
-
-reader.onload=function(e){
-
-img.src=e.target.result;
-
-}
-
-reader.readAsDataURL(file);
-
-sizePanel.style.display="block";
-
-}
-
-});
-
-
-function startCrop(){
-
-sizePanel.style.display="none";
-
-cropArea.style.display="block";
 
 canvas.width=300;
 canvas.height=380;
 
-img.onload=function(){
+imageInput.onchange=function(){
 
-drawImage();
+let file=this.files[0];
+
+let reader=new FileReader();
+
+reader.onload=e=>{
+
+img.src=e.target.result;
+
+img.onload=draw;
 
 }
 
+reader.readAsDataURL(file)
+
 }
 
 
-function drawImage(){
+function draw(){
+
+ctx.filter=
+`brightness(${brightness.value}%) saturate(${saturation.value}%) contrast(${contrast.value}%)`;
+
+let w=img.width*scale;
+let h=img.height*scale;
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
-let w=img.widthscale;
-let h=img.heightscale;
-
-ctx.drawImage(img,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
+ctx.drawImage(img,(300-w)/2,(380-h)/2,w,h)
 
 }
 
+function zoomIn(){scale+=0.1;draw()}
+function zoomOut(){scale-=0.1;if(scale<0.2)scale=0.2;draw()}
 
-function zoomIn(){
+brightness.oninput=draw
+saturation.oninput=draw
+contrast.oninput=draw
 
-scale+=0.1;
 
-drawImage();
+function goCrop(){
 
-}
+uploadPanel.style.display="none"
+cropPanel.style.display="block"
 
-function zoomOut(){
-
-scale-=0.1;
-
-if(scale<0.2){
-
-scale=0.2;
-
-}
-
-drawImage();
+s1.classList.remove("active")
+s2.classList.add("active")
 
 }
 
+function backUpload(){
 
-function backToSize(){
-
-cropArea.style.display="none";
-sizePanel.style.display="block";
+cropPanel.style.display="none"
+uploadPanel.style.display="block"
 
 }
 
 function goBackground(){
 
-cropArea.style.display="none";
-backgroundStep.style.display="block";
+cropPanel.style.display="none"
+bgPanel.style.display="block"
 
-octx.drawImage(canvas,0,0);
+octx.drawImage(canvas,0,0)
 
-bgctx.fillStyle=document.getElementById("bgColor").value;
-
-bgctx.fillRect(0,0,300,380);
-
-bgctx.drawImage(canvas,0,0);
+updateBg()
 
 }
 
+function updateBg(){
 
-document.getElementById("bgColor").addEventListener("input",function(){
-
-bgctx.fillStyle=this.value;
-
-bgctx.fillRect(0,0,300,380);
-
-bgctx.drawImage(canvas,0,0);
-
-});
-
-
-function showTextBox(){
-
-let box=document.getElementById("textBox");
-
-box.style.display=box.style.display=="none"?"block":"none";
+bgctx.fillStyle=bgColor.value
+bgctx.fillRect(0,0,300,380)
+bgctx.drawImage(canvas,0,0)
 
 }
 
+bgColor.oninput=updateBg
+
+
+function backCrop(){
+
+bgPanel.style.display="none"
+cropPanel.style.display="block"
+
+}
 
 function goDownload(){
 
-backgroundStep.style.display="none";
-downloadStep.style.display="block";
+bgPanel.style.display="none"
+downloadPanel.style.display="block"
 
 }
 
+function backBg(){
 
-function backToCrop(){
-
-backgroundStep.style.display="none";
-cropArea.style.display="block";
-
-}
-
-function backToBackground(){
-
-downloadStep.style.display="none";
-backgroundStep.style.display="block";
+downloadPanel.style.display="none"
+bgPanel.style.display="block"
 
 }
 
 
 function downloadSingle(){
 
-let link=document.createElement("a");
-
-link.download="passport-photo.png";
-
-link.href=bgCanvas.toDataURL();
-
-link.click();
+let link=document.createElement("a")
+link.download="passport.png"
+link.href=bgCanvas.toDataURL()
+link.click()
 
 }
-
 
 function downloadSheet(){
 
-let sheet=document.createElement("canvas");
+let sheet=document.createElement("canvas")
+let sctx=sheet.getContext("2d")
 
-let sctx=sheet.getContext("2d");
-
-sheet.width=1200;
-
-sheet.height=1700;
+sheet.width=1200
+sheet.height=1700
 
 for(let y=0;y<5;y++){
-
 for(let x=0;x<3;x++){
 
-sctx.drawImage(bgCanvas,x350+50,y320+50,300,380);
+sctx.drawImage(bgCanvas,x*350+50,y*320+50,300,380)
+
+}
+}
+
+let link=document.createElement("a")
+
+link.download="passport-sheet.png"
+link.href=sheet.toDataURL()
+
+link.click()
 
 }
 
-}
+</script>
 
-let link=document.createElement("a");
-
-link.download="passport-sheet.png";
-
-link.href=sheet.toDataURL();
-  </script>
 </body>
 </html>
