@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,17 +15,32 @@ font-family:Arial;
 background:#f4f4f4;
 }
 
-/* Header */
+/* HEADER */
 
 .header{
 background:#5a66a5;
 color:white;
 padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
 font-size:22px;
 font-weight:bold;
 }
 
-/* Container */
+/* MENU */
+
+.menu a{
+color:white;
+margin-left:15px;
+text-decoration:none;
+font-size:16px;
+}
+
+/* MAIN */
 
 .container{
 max-width:900px;
@@ -34,7 +50,13 @@ background:white;
 text-align:center;
 }
 
-/* Upload Box */
+.subtitle{
+color:#555;
+font-size:15px;
+margin-top:-10px;
+}
+
+/* UPLOAD BOX */
 
 .upload-box{
 border:3px dashed #9aa4d6;
@@ -53,6 +75,16 @@ border-radius:5px;
 margin-top:15px;
 }
 
+/* FOOTER */
+
+.footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+
 </style>
 
 </head>
@@ -60,12 +92,24 @@ margin-top:15px;
 <body>
 
 <div class="header">
-i10 IMAGE TOOL
+
+<div class="logo">i10 IMAGE TOOL</div>
+
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="#">Tools</a>
+<a href="#">Contact</a>
+</div>
+
 </div>
 
 <div class="container">
 
 <h1>Make Passport Size Photo</h1>
+
+<p class="subtitle">
+Welcome to i10 Image Tool - Your reliable solution for passport size image !
+</p>
 
 <div class="upload-box">
 
@@ -81,6 +125,12 @@ Select Image
 </button>
 
 </div>
+
+</div>
+
+<div class="footer">
+
+Contact : your@email.com
 
 </div>
 
