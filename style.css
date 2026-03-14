@@ -574,4 +574,14 @@ margin:5px;
 .stars i.active{
 color:#2196f3;
 }
-
+.tool-box{
+display:block;
+border:2px solid #2b6cb0;
+padding:12px;
+border-radius:8px;
+margin:8px 0;
+text-align:center;
+text-decoration:none;
+color:black;
+background:white;
+}
